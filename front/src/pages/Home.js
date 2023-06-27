@@ -19,7 +19,7 @@ function Home () {
                 <h1 className="sr-only">Argent Bank</h1>
             </a>
             <div>
-                <NavLink to="sign-in">
+                <NavLink to="/sign-in">
                 <a className="main-nav-item">
                 <i className="fa fa-user-circle"></i>
                 Sign In
