@@ -1,26 +1,27 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
-
+import { login } from '../features/auth/authSlice';
 import BankLogo from '../assets/argentBankLogo.png';
 
-
 function SignIn() {
-
-    
+ 
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
+    const dispatch = useDispatch()
 
     const loginHandler = (e) =>{
-
+        const data = {
+            "email": email,
+            "password": password
+        }
         e.preventDefault()
-        console.log(email, password);
- 
+        dispatch(login(data))  
     }
 
     return ( 
         <div>
-
             <nav className="main-nav">
                 <NavLink to="/" className="main-nav-logo">
                     <img
@@ -30,19 +31,10 @@ function SignIn() {
                     />
                     <h1 className="sr-only">Argent Bank</h1>
                 </NavLink>
-                <div>
-                    <NavLink to="/sign-in" className="main-nav-item">
-                        <i className="fa fa-user-circle"></i>
-                        Sign In
-                    </NavLink>
-                </div>
             </nav>
             <main className="main bg-dark">
                 <section className="sign-in-content">
-                    <i className="fa fa-user-circle sign-in-icon"></i>
-                    {/* <FontAwesomeIcon icon={faUserCircle} /> */}
                     <h1>Sign In</h1>
-
                     
                     <form onSubmit={loginHandler}>
                         <div className="input-wrapper">
