@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
 import { login } from '../features/auth/authSlice';
 import BankLogo from '../assets/argentBankLogo.png';
@@ -10,6 +10,8 @@ function SignIn() {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
     const dispatch = useDispatch()
+    const auth = useSelector(state => state.auth)
+    const navigate = useNavigate()
 
     const loginHandler = (e) =>{
         const data = {
@@ -19,6 +21,12 @@ function SignIn() {
         e.preventDefault()
         dispatch(login(data))  
     }
+
+    useEffect(() => {
+        if (auth?.user) {
+            return navigate('/user')
+        }
+    },[auth.user])
 
     return ( 
         <div>
@@ -47,12 +55,10 @@ function SignIn() {
                         </div>
                         <div className="input-remember">
                             <input type="checkbox" id="remember-me" />
-                            <label htmlFor="remember-me">Remember me</label>
-                                                     
+                            <label htmlFor="remember-me">Remember me</label>                                                   
                         </div>
                         
                         <input className="sign-in-button" type = "submit" />
-
                     </form>
                 </section>
             </main>

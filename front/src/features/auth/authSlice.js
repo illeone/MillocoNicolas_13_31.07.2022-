@@ -6,9 +6,9 @@ const userLogin = JSON.parse(localStorage.getItem("userLogin"))
 
 const initialState = {
     user: userLogin ? userLogin : null,
-    isError:false,
-    isSuccess:false,
     isLoading:false,
+    isSuccess:false,
+    isError:false,
     message:"",
     userInfos: null,
 }
@@ -45,5 +45,6 @@ export const authSlice = createSlice({
         })
     }
 })
+
 
 export default authSlice.reducer
