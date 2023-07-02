@@ -1,9 +1,20 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import BankLogo from '../assets/argentBankLogo.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInfos, logout } from '../features/auth/authSlice';
 
 function User () {
 
-    return (
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await dispatch(logout());
+    navigate('/sign-in');
+  };
+
+  return (
 
   <body>
     <nav className="main-nav">
@@ -20,7 +31,7 @@ function User () {
           <i className="fa fa-user-circle"></i>
           Tony
         </a>
-        <NavLink to="/" className="main-nav-item" style={{ textDecoration: 'none' }}>
+        <NavLink to="/" className="main-nav-item" style={{ textDecoration: 'none' }} onClick={handleLogout}>
           <i className="fa fa-sign-out" ></i>
           Sign Out
         </NavLink>
