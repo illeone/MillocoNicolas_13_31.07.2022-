@@ -8,6 +8,10 @@ const login = async(userData) => {
     return response.data 
 }
 
-const authService = {login}
+const logout = () => {
+    localStorage.removeItem("userLogin")
+}
+
+const authService = {login, logout}
 
 export default authService
