@@ -64,6 +64,16 @@ export const authSlice = createSlice({
             state.isSuccess = false
         })
 
+        .addCase(getUserInfos.pending,(state) => {
+            state.isLoading = true
+        }).addCase(getUserInfos.fulfilled,(state, action) =>{
+            state.isLoading = false
+            state.userInfos = action.payload
+        }).addCase(getUserInfos.rejected,(state, action) =>{
+            state.isLoading = false
+            state.userInfos = action.payload
+        })
+
     }
 })
 
