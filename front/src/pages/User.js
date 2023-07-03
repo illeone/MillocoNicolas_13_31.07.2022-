@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import BankLogo from '../assets/argentBankLogo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfos, logout } from '../features/auth/authSlice';
+import { useEffect } from 'react';
 
 function User () {
 
@@ -13,6 +14,13 @@ function User () {
     await dispatch(logout());
     navigate('/sign-in');
   };
+
+  useEffect(() => {
+    const token = (auth.user.body.token)
+    console.log(auth.user.body.token);
+  
+    dispatch(getUserInfos(token))
+  },[])
 
   return (
 
