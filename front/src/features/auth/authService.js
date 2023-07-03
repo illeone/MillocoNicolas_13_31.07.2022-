@@ -12,6 +12,16 @@ const logout = () => {
     localStorage.removeItem("userLogin")
 }
 
-const authService = {login, logout}
+const getUserInfos = async(token) => {
+    const response = await axios.post("http://localhost:3001/api/v1/user/profile",{}, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+    return response.data 
+}
+
+const authService = {login, logout, getUserInfos}
 
 export default authService
