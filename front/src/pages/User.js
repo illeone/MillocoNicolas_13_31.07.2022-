@@ -17,7 +17,7 @@ function User () {
 
   useEffect(() => {
     const token = (auth.user.body.token)
-    console.log(auth.user.body.token);
+    // console.log(auth.user.body.token);
   
     dispatch(getUserInfos(token))
   },[])
@@ -47,7 +47,7 @@ function User () {
     </nav>
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />Tony Jarvis!</h1>
+        <h1>Welcome back<br />{auth?.userInfos?.body?.firstName} {auth?.userInfos?.body?.lastName}</h1>
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>
