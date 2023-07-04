@@ -24,14 +24,14 @@ function Form() {
     }
 
     return ( 
-        <form>
+        <form onSubmit={updateHandler}>
             <div className="input-wrapper">
                 <label htmlFor="first-name">First Name</label>
-                <input type="text" id="first-name" />
+                <input type="text" id="first-name" value={firstName} onChange ={e => setFirstName(e.target.value)}  />
             </div>
             <div className="input-wrapper">
                 <label htmlFor="last-name">Last Name</label>
-                <input type="text" id="last-name" />
+                <input type="text" id="last-name" value={lastName} onChange ={e => setLastName(e.target.value)} />
             </div>
                         
             <input className="sign-in-button" type = "submit" />
