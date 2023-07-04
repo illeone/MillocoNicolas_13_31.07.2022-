@@ -1,4 +1,27 @@
-function Form() { 
+import { useState } from 'react';
+import { useSelector, useDispatch} from "react-redux";
+
+import { putUserInfos } from '../features/auth/authSlice';
+
+function Form() {
+
+    const auth = useSelector(state => state.auth)
+    const [firstName,setFirstName] = useState(auth?.userInfos?.body?.firstName)
+    const [lastName,setLastName] = useState(auth?.userInfos?.body?.lastName) 
+    const dispatch = useDispatch()
+
+    const updateHandler = (e) =>{
+        const token = (auth?.user?.body?.token)
+        const data = {
+            user:{
+            "firstName": firstName,
+            "lastName": lastName
+            }, 
+            token:token
+        }
+        e.preventDefault()
+        dispatch(putUserInfos(data))  
+    }
 
     return ( 
         <form>
@@ -17,3 +40,4 @@ function Form() {
 }
 
 export default Form ;
+
