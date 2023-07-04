@@ -2,7 +2,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import BankLogo from '../assets/argentBankLogo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfos, logout } from '../features/auth/authSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Form from '../components/Form';
 
 function User () {
 
@@ -21,6 +22,8 @@ function User () {
   
     dispatch(getUserInfos(token))
   },[])
+
+  const [show, setShow] = useState(false);
 
   return (
 
@@ -48,7 +51,8 @@ function User () {
     <main className="main bg-dark">
       <div className="header">
         <h1>Welcome back<br />{auth?.userInfos?.body?.firstName} {auth?.userInfos?.body?.lastName}</h1>
-        <button className="edit-button">Edit Name</button>
+        <button className="edit-button" onClick={() => setShow(!show)}>Edit Name</button>
+        { show ? <Form /> : null }
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
