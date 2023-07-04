@@ -37,6 +37,17 @@ export const getUserInfos = createAsyncThunk("auth/getUserInfos", async(user,thu
     }
 }) 
 
+export const putUserInfos = createAsyncThunk("auth/putUserInfos", async(data,thunkAPI) => {
+    try {
+        console.log(data);
+        return await authService.putUserInfos(data)
+        
+    } catch (error) {
+        const message = error.response.data.message
+        return thunkAPI.rejectWithValue(message)
+    }
+}) 
+
 export const authSlice = createSlice({
     name: "auth",
     initialState,
