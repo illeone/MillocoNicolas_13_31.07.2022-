@@ -22,6 +22,16 @@ const getUserInfos = async(token) => {
     return response.data 
 }
 
-const authService = {login, logout, getUserInfos}
+const putUserInfos = async(data) => {
+    console.log(data);
+    const response = await axios.put("http://localhost:3001/api/v1/user/profile", data.user, {
+        headers: {
+            Authorization: `Bearer ${data.token}`
+        }
+    })
+    return response.data 
+}
+
+const authService = {login, logout, getUserInfos, putUserInfos}
 
 export default authService
