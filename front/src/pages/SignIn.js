@@ -60,6 +60,10 @@ function SignIn() {
                         
                         <input className="sign-in-button" type = "submit" />
                     </form>
+
+                    <NavLink to="/sign-up">
+                        Sign-up
+                    </NavLink>
                 </section>
             </main>
             <footer className="footer">
