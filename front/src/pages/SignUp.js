@@ -52,6 +52,7 @@ function SignUp() {
                     <i className="fa fa-user-circle sign-in-icon"></i>
                     <h1>Sign Up</h1>
                     {auth.isLoading !== false ? <Loader /> : null}
+                    {auth.message !== "" ? <p className="message-error">{auth.message} </p> : null}
                     <form onSubmit={signUpHandler}>
                     <div className="input-wrapper">
                             <label htmlFor="username">First name</label>

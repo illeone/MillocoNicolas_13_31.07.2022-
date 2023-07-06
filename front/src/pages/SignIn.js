@@ -46,6 +46,7 @@ function SignIn() {
                     <i className="fa fa-user-circle sign-in-icon"></i>
                     <h1>Sign In</h1>
                     {auth.isLoading && <Loader /> }
+                    {auth.message !== "" ? <p className="message-error">{auth.message} </p> : null}
                     <form onSubmit={loginHandler}>
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
