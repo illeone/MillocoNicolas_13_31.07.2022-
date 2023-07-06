@@ -3,7 +3,7 @@ import BankLogo from '../assets/argentBankLogo.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserInfos, logout } from '../features/auth/authSlice';
 import { useEffect, useState } from 'react';
-import Form from '../components/Form';
+import Form from '../Components/Form';
 
 function User () {
 

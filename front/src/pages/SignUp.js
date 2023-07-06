@@ -1,7 +1,37 @@
 import BankLogo from '../assets/argentBankLogo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import {useDispatch, useSelector} from "react-redux";
+
+import { register } from '../features/auth/authSlice';
 
 function SignUp() {
+
+    const [firstname,setFirstname] = useState("")
+    const [lastname,setLastname] = useState("")
+    const [email,setEmail] = useState("")
+    const [password,setPassword] = useState("")
+    
+    const auth = useSelector(state => state.auth)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const signUpHandler = (e) =>{
+        const data = {
+            "email": email,
+            "password": password,
+            "firstName": firstname,
+            "lastName": lastname 
+        }
+        e.preventDefault()
+        dispatch(register(data))  
+    }
+
+    if (auth?.userInfos?.body?._id) {
+        console.log("user")
+        return <Navigate to= "/sign-in"/>;
+        
+      }
 
     return ( 
         <div>
@@ -18,26 +48,26 @@ function SignUp() {
             </nav>
             <main className="main bg-dark">
                 <section className="sign-in-content">
-                    <form autocomplete="off">
-                        <div className="input-wrapper">
+                    <form onSubmit={signUpHandler}>
+                    <div className="input-wrapper">
                             <label htmlFor="username">First name</label>
-                            <input type="text" id="username" />
+                            <input type="text" id="username" value={firstname} onChange ={e => setFirstname(e.target.value)} />
                         </div>
                         <div className="input-wrapper">
                             <label htmlFor="password">Last name</label>
-                            <input type="text" id="lastname" />
+                            <input type="text" id="lastname" value={lastname} onChange ={e => setLastname(e.target.value)} />
                         </div>
                         <div className="input-wrapper">
                             <label htmlFor="email">email</label>
-                            <input type="email" id="email" />
+                            <input type="email" id="email" value={email} onChange ={e => setEmail(e.target.value)} />
                         </div>
                         <div className="input-wrapper">
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" />
+                            <input type="password" id="password" value={password} onChange ={e => setPassword(e.target.value)} />
                         </div>
                         <div className="input-remember">
                             <input type="checkbox" id="remember-me" />
-                            <label htmlFor="remember-me">Remember me</label>
+                            <label htmlFor="remember-me">Remember me</label>                                                  
                         </div>
                         
                         <input className="sign-in-button" type = "submit" />
