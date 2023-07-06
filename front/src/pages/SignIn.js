@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { login } from '../features/auth/authSlice';
 import BankLogo from '../assets/argentBankLogo.png';
+import Loader from '../Components/Loader';
 
 function SignIn() {
  
@@ -42,8 +43,9 @@ function SignIn() {
             </nav>
             <main className="main bg-dark">
                 <section className="sign-in-content">
+                    <i className="fa fa-user-circle sign-in-icon"></i>
                     <h1>Sign In</h1>
-                    
+                    {auth.isLoading && <Loader /> }
                     <form onSubmit={loginHandler}>
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
