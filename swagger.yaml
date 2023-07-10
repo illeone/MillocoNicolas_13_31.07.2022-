@@ -110,6 +110,83 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /transactions:
+    get:
+      tags:
+        - Transactions Module
+      summary: Get all transactions for the current month
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: List of transactions for the current month
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
+    post:
+      tags:
+        - Transactions Module
+      summary: Add a new transaction
+      parameters:
+        - in: body
+          name: body
+          description: New transaction details
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
+      security:
+        - Bearer: []
+      responses:
+        '201':
+          description: Transaction created successfully
+        '400':
+          description: Invalid transaction details
+  /transactions/{transactionId}:
+    get:
+      tags:
+        - Transactions Module
+      summary: Get details of a specific transaction
+      parameters:
+        - name: transactionId
+          in: path
+          description: ID of the transaction to retrieve
+          required: true
+          type: string
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: Details of the transaction
+          schema:
+            $ref: '#/definitions/Transaction'
+        '404':
+          description: Transaction not found
+    put:
+      tags:
+        - Transactions Module
+      summary: Update a specific transaction
+      parameters:
+        - name: transactionId
+          in: path
+          description: ID of the transaction to update
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Transaction details to update
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
+      security:
+        - Bearer: []
+      responses:
+        '200':
+          description: Transaction updated successfully
+        '400':
+          description: Invalid transaction details
+        '404':
+          description: Transaction not found
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -164,3 +241,30 @@ definitions:
         type: string
       lastName:
         type: string
+  Transaction:
+    type: object
+    properties:
+      date:
+        type: string
+        format: date-time
+        description: Date of the transaction
+      description:
+        type: string
+        description: Transaction description
+      amount:
+        type: number
+        format: float
+        description: Transaction amount
+      balance:
+        type: number
+        format: float
+        description: Balance after the transaction
+      type:
+        type: string
+        description: Transaction type
+      category:
+        type: string
+        description: Transaction category
+      notes:
+        type: string
+        description: Additional notes about the transaction
