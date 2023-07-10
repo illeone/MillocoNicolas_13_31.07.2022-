@@ -1,9 +1,9 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import BankLogo from '../assets/argentBankLogo.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserInfos, logout } from '../features/auth/authSlice';
+import { getUserInfos } from '../features/auth/authSlice';
 import { useEffect, useState } from 'react';
 import Form from '../Components/Form';
+import NavBar from '../Components/NavBar';
+import { useNavigate } from 'react-router-dom';
 
 function User () {
 
@@ -11,43 +11,21 @@ function User () {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    await dispatch(logout());
-    navigate('/sign-in');
-  };
-
   useEffect(() => {
-    const token = (auth.user.body.token)
-    // console.log(auth.user.body.token);
-  
-    dispatch(getUserInfos(token))
-  },[])
+    if (auth.user) {
+      const token = (auth.user.body.token)
+      dispatch(getUserInfos(token))
+    } else {
+      navigate('/sign-in');
+    }
+  },[auth.user])
 
   const [show, setShow] = useState(false);
 
   return (
 
   <body>
-    <nav className="main-nav">
-      <NavLink to="/" class="main-nav-logo">
-        <img
-          className="main-nav-logo-image"
-          src={BankLogo}
-          alt="Argent Bank Logo"
-        />
-        <h1 className="sr-only">Argent Bank</h1>
-      </NavLink>
-      <div>
-        <a className="main-nav-item">
-          <i className="fa fa-user-circle"></i>
-          Tony
-        </a>
-        <NavLink to="/" className="main-nav-item" style={{ textDecoration: 'none' }} onClick={handleLogout}>
-          <i className="fa fa-sign-out" ></i>
-          Sign Out
-        </NavLink>
-      </div>
-    </nav>
+    <NavBar />
     <main className="main bg-dark">
       <div className="header">
         <h1>Welcome back<br />{auth?.userInfos?.body?.firstName} {auth?.userInfos?.body?.lastName}</h1>

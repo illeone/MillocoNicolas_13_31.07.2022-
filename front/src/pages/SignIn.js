@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import { login } from '../features/auth/authSlice';
-import BankLogo from '../assets/argentBankLogo.png';
 import Loader from '../Components/Loader';
+import NavBar from '../Components/NavBar';
 
 function SignIn() {
  
@@ -31,16 +31,7 @@ function SignIn() {
 
     return ( 
         <div>
-            <nav className="main-nav">
-                <NavLink to="/" className="main-nav-logo">
-                    <img
-                    className="main-nav-logo-image"
-                    src={BankLogo}
-                    alt="Argent Bank Logo"
-                    />
-                    <h1 className="sr-only">Argent Bank</h1>
-                </NavLink>
-            </nav>
+            <NavBar authType="signup" />
             <main className="main bg-dark">
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>
@@ -63,10 +54,6 @@ function SignIn() {
                         
                         <input className="sign-in-button" type = "submit" />
                     </form>
-
-                    <NavLink to="/sign-up">
-                        Sign-up
-                    </NavLink>
                 </section>
             </main>
             <footer className="footer">

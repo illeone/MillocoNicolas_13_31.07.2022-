@@ -1,10 +1,10 @@
-import BankLogo from '../assets/argentBankLogo.png';
-import { NavLink, Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import { register } from '../features/auth/authSlice';
 import Loader from '../Components/Loader';
+import NavBar from '../Components/NavBar';
 
 function SignUp() {
 
@@ -37,16 +37,7 @@ function SignUp() {
     return ( 
         <div>
 
-            <nav className="main-nav">
-                <NavLink to="/" className="main-nav-logo">
-                    <img
-                    className="main-nav-logo-image"
-                    src={BankLogo}
-                    alt="Argent Bank Logo"
-                    />
-                    <h1 className="sr-only">Argent Bank</h1>
-                </NavLink>
-            </nav>
+            <NavBar authType="signin" />
             <main className="main bg-dark">
                 <section className="sign-in-content">
                     <i className="fa fa-user-circle sign-in-icon"></i>
