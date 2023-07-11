@@ -3,7 +3,7 @@ import { useSelector, useDispatch} from "react-redux";
 
 import { putUserInfos } from '../features/auth/authSlice';
 
-function Form() {
+function Form({setShow}) {
 
     const auth = useSelector(state => state.auth)
     const [firstName,setFirstName] = useState(auth?.userInfos?.body?.firstName)
@@ -25,16 +25,18 @@ function Form() {
 
     return ( 
         <form onSubmit={updateHandler}>
-            <div className="input-wrapper">
-                <label htmlFor="first-name">First Name</label>
-                <input type="text" id="first-name" value={firstName} onChange ={e => setFirstName(e.target.value)}  />
+            <div className="input-wrapper-form">
+                <div>
+                    <label htmlFor="custom-first-name">First Name</label>
+                    <input type="text" id="custom-first-name" value={firstName} onChange ={e => setFirstName(e.target.value)}  />
+                    <button type="submit" className="save-button">Save</button>
+                </div>
+                <div>
+                    <label htmlFor="custom-last-name">Last Name</label>
+                    <input type="text" id="custom-last-name" value={lastName} onChange ={e => setLastName(e.target.value)} />
+                    <button type="button" className="cancel-button" onClick={() => { setLastName(''); setFirstName(''); setShow(false); }}>Cancel</button>
+                </div>
             </div>
-            <div className="input-wrapper">
-                <label htmlFor="last-name">Last Name</label>
-                <input type="text" id="last-name" value={lastName} onChange ={e => setLastName(e.target.value)} />
-            </div>
-                        
-            <input className="sign-in-button" type = "submit" />
         </form>
      );
 }

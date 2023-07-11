@@ -24,13 +24,12 @@ function User () {
 
   return (
 
-  <body>
+  <div>
     <NavBar />
     <main className="main bg-dark">
       <div className="header">
         <h1>Welcome back<br />{auth?.userInfos?.body?.firstName} {auth?.userInfos?.body?.lastName}</h1>
-        <button className="edit-button" onClick={() => setShow(!show)}>Edit Name</button>
-        { show ? <Form /> : null }
+        { show ? <Form setShow={setShow} /> : <button className="edit-button" onClick={() => setShow(true)}>Edit Name</button> }
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">
@@ -67,7 +66,7 @@ function User () {
     <footer className="footer">
       <p className="footer-text">Copyright 2020 Argent Bank</p>
     </footer>
-  </body>
+  </div>
       );
 }
 
