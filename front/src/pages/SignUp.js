@@ -2,7 +2,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
-import { register } from '../features/auth/authSlice';
+import { register } from '../features/auth/asyncThunkService';
 import Loader from '../Components/Loader';
 import NavBar from '../Components/NavBar';
 

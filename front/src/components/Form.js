@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch} from "react-redux";
 
-import { putUserInfos } from '../features/auth/authSlice';
+import { putUserInfos } from '../features/auth/asyncThunkService';
 
 function Form({setShow}) {
 

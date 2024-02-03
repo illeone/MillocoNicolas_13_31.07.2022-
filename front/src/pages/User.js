@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserInfos } from '../features/auth/authSlice';
+import { getUserInfos } from '../features/auth/asyncThunkService';
 import { useEffect, useState } from 'react';
 import Form from '../Components/Form';
 import NavBar from '../Components/NavBar';
