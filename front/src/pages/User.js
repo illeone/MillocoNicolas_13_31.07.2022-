@@ -28,7 +28,7 @@ function User () {
     <NavBar />
     <main className="main bg-dark">
       <div className="header">
-        <h1>Welcome back<br />{auth?.userInfos?.body?.firstName} {auth?.userInfos?.body?.lastName}</h1>
+        <h1 className="text-welcome">Welcome back<br />{auth?.userInfos?.body?.firstName} {auth?.userInfos?.body?.lastName}</h1>
         { show ? <Form setShow={setShow} /> : <button className="edit-button" onClick={() => setShow(true)}>Edit Name</button> }
       </div>
       <h2 className="sr-only">Accounts</h2>

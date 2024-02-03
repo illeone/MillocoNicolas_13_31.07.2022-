@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { register } from '../features/auth/asyncThunkService';
 import Loader from '../Components/Loader';
 import NavBar from '../Components/NavBar';
+import SubmitButton from '../Components/SubmitBoutton';
 
 function SignUp() {
 
@@ -50,7 +51,7 @@ function SignUp() {
                             <input type="text" id="username" value={firstname} onChange ={e => setFirstname(e.target.value)} />
                         </div>
                         <div className="input-wrapper">
-                            <label htmlFor="password">Last name</label>
+                            <label htmlFor="lastname">Last name</label>
                             <input type="text" id="lastname" value={lastname} onChange ={e => setLastname(e.target.value)} />
                         </div>
                         <div className="input-wrapper">
@@ -66,7 +67,7 @@ function SignUp() {
                             <label htmlFor="remember-me">Remember me</label>                                                  
                         </div>
                         
-                        <input className="sign-in-button" type = "submit" />
+                        <SubmitButton text="Sign Up" />
 
                     </form>
                 </section>

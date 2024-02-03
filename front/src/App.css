@@ -15,6 +15,7 @@ body {
 
 .main {
   flex: 1;
+  /* height:50rem; */
 }
 
 .bg-dark {
@@ -54,10 +55,13 @@ body {
 .main-nav-item {
   text-decoration: none;
   margin-right: 1rem;
+  font-weight: bold;
 }
 
 .main-nav-item:hover {
-  text-decoration: underline;
+  text-decoration:underline #00bc77;
+  cursor: pointer;
+  color:#00bc77;
 }
 
 .main-nav-logo {
@@ -186,10 +190,13 @@ body {
 
 .input-remember {
   display: flex;
+  align-items:flex-start;
 }
 
 .input-remember label {
   margin-left: 0.25rem;
+  font-size:0.9rem;
+  font-weight:normal;
 }
 
 .input-wrapper {
@@ -211,7 +218,7 @@ body {
 .footer {
   display: flex;
   justify-content: center;
-  border-top: 2px solid #ccc;
+  /* border-top: 2px solid #ccc; */
   padding: 2rem 0 1.5rem;
 }
 
@@ -265,9 +272,17 @@ body {
   padding: 10px;
 }
 
+.edit-button:hover {
+  border-color: #00965f;
+  background-color: #00965f;
+}
+
 .header {
   color: #fff;
   margin-bottom: 2rem;
+}
+.text-welcome{
+  padding-top: 2rem;
 }
 
 .transaction-button {
@@ -418,7 +433,18 @@ input[type="text"] {
   font-size: 1em;
   border-radius: 5px;
   border: 1px solid grey;
-  width: 200px;
+}
+input[type="email"] {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+input[type="password"] {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid grey;
 }
 
 button {
@@ -432,18 +458,18 @@ button {
 }
 
 .save-button {
-  background-color: #4CAF50; /* Green */
+  background-color: #00bc77;
 }
 
 .cancel-button {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
 }
 
 .save-button:hover {
-  background-color: #45a049; /* Darker green */
+  background-color: #00a166;
 }
 
 .cancel-button:hover {
-  background-color: #da190b; /* Darker red */
+  background-color: #da190b;
 }
 

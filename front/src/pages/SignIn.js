@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import { login } from '../features/auth/asyncThunkService';
+
 import Loader from '../Components/Loader';
 import NavBar from '../Components/NavBar';
+import SubmitButton from '../Components/SubmitBoutton';
 
 function SignIn() {
  
@@ -52,7 +54,7 @@ function SignIn() {
                             <label htmlFor="remember-me">Remember me</label>                                                   
                         </div>
                         
-                        <input className="sign-in-button" type = "submit" />
+                        <SubmitButton text="Sign In" />
                     </form>
                 </section>
             </main>

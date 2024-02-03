@@ -33,7 +33,7 @@ function NavBar({authType}) {
                         <i className="fa fa-user-circle"></i>
                         {auth?.userInfos?.body?.firstName}
                     </a>
-                    <span className="main-nav-item" style={{ textDecoration: 'none' }} onClick={handleLogOut}>
+                    <span className="main-nav-item"  onClick={handleLogOut}>
                         <i className="fa fa-sign-out"></i>
                         Log Out
                     </span>
