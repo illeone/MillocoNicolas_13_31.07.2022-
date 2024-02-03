@@ -1,5 +1,5 @@
-import { Navigate, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
 import { register } from '../features/auth/asyncThunkService';
@@ -28,11 +28,11 @@ function SignUp() {
         dispatch(register(data))  
     }
 
-    if (auth?.userInfos?.body?._id) {
-        console.log("user")
-        return <Navigate to= "/sign-in"/>;
-        
-      }
+    useEffect(() => {
+        if (auth?.userInfos?.body?._id) {
+            navigate("/sign-in");
+        }
+    }, [auth.userInfos]);
 
     return ( 
         <div>

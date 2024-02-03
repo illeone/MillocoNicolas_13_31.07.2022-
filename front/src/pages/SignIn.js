@@ -25,7 +25,7 @@ function SignIn() {
 
     useEffect(() => {
         if (auth?.user) {
-            return navigate('/user')
+            navigate('/user')
         }
     },[auth.user])
 
