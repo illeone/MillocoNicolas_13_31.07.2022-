@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from '../Components/Form';
 import NavBar from '../Components/NavBar';
 import Account from '../Components/Account';
+import Footer from '../Components/Footer';
 
 function User () {
 
@@ -38,9 +39,8 @@ function User () {
       <Account title="Argent Bank Savings (x6712)" amount="$10,928.42" description="Available Balance" />
       <Account title="Argent Bank Credit Card (x8349)" amount="$184.30" description="Current Balance" />
     </main>
-    <footer className="footer">
-      <p className="footer-text">Copyright 2020 Argent Bank</p>
-    </footer>
+
+    <Footer />
   </div>
       );
 }

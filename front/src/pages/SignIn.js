@@ -7,6 +7,7 @@ import { login } from '../features/auth/asyncThunkService';
 import Loader from '../Components/Loader';
 import NavBar from '../Components/NavBar';
 import SubmitButton from '../Components/SubmitBoutton';
+import Footer from '../Components/Footer';
 
 function SignIn() {
  
@@ -58,10 +59,7 @@ function SignIn() {
                     </form>
                 </section>
             </main>
-            <footer className="footer">
-                <p className="footer-text">Copyright 2020 Argent Bank</p>
-            </footer>
-
+            <Footer />
         </div>
         
      );

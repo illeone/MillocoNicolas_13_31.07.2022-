@@ -1,4 +1,3 @@
-// AccountSection.js
 import React from 'react';
 
 const Account = ({ title, amount, description }) => (
