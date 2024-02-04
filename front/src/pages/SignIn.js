@@ -33,7 +33,7 @@ function SignIn() {
     },[auth.user])
 
     return ( 
-        <div>
+        <div className="page-signin">
             <NavBar authType="signup" />
             <main className="main bg-dark">
                 <section className="sign-in-content">

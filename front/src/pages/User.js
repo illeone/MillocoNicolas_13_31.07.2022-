@@ -21,13 +21,13 @@ function User () {
     } else {
       navigate('/sign-in');
     }
-  },[auth.user])
-
+  },[auth.user]);
+  
   const [show, setShow] = useState(false);
 
   return (
 
-  <div>
+  <div className="page-user">
     <NavBar />
     <main className="main bg-dark">
       <div className="header">

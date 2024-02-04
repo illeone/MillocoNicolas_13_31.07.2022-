@@ -3,30 +3,15 @@ import BankLogo from '../assets/argentBankLogo.png';
 import IconChat from '../assets/icon-chat.png';
 import IconMoney from '../assets/icon-money.png';
 import IconSecurity from '../assets/icon-security.png';
+import Footer from '../Components/Footer';
+import NavBar from '../Components/NavBar';
 
 
 function Home () {
 
     return ( 
-        <body>
-            <nav className="main-nav">
-            <a className="main-nav-logo" href="./index.html">
-                <img
-                className="main-nav-logo-image"
-                src={BankLogo}
-                alt="Argent Bank Logo"
-                />
-                <h1 className="sr-only">Argent Bank</h1>
-            </a>
-            <div>
-                <NavLink to="/sign-in">
-                <a className="main-nav-item">
-                <i className="fa fa-user-circle"></i>
-                Sign In
-                </a>
-                </NavLink>
-            </div>
-            </nav>
+        <div>
+            <NavBar authType="sign-in" />
             <main>
             <div className="hero">
                 <section className="hero-content">
@@ -72,10 +57,8 @@ function Home () {
                 </div>
             </section>
             </main>
-            <footer className="footer">
-            <p className="footer-text">Copyright 2020 Argent Bank</p>
-            </footer>
-        </body>
+            <Footer />
+        </div>
 
      );
 }
